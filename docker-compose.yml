@@ -16,6 +16,21 @@ services:
         ports:
             - 5432:5432
 
+    graphql:
+        container_name: forum-example-graphql
+        restart: always
+        image: forum-example-graphql
+        build:
+            context: ./graphql
+        env_file: 
+            - ./.env
+        depends_on: 
+            - db
+        networks: 
+            - network
+        ports:
+            - 5432:5432
+
 networks: 
     network:
 
