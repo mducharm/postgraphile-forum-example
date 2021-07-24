@@ -27,3 +27,18 @@ comment on column app_public.post.body is 'The main body text of our post.';
 comment on column app_public.post.created_at is 'The time this post was created.';
 
 /* Functions */
+
+create function 
+    app_public.post_summary(
+        post app_public.post,
+        length int default 50,
+        omission text default '...'
+    ) 
+returns text as $$
+    select case
+        when post.body is null then null
+        else substr(post.body, 0, length) || omission
+    end
+$$ language sql stable;
+
+comment on function app_public.post_summary(forum_example.post, int, text) is 'A truncated version of the body for summaries.';
