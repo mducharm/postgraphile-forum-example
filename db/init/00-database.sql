@@ -12,7 +12,7 @@ create table public.post (
     id serial primary key,
     title text, 
     body text,
-    created_date timestamp default current_timestamp
+    created_date timestamp default current_timestamp,
     author_id integer not null references public.user(id)
 );
 
