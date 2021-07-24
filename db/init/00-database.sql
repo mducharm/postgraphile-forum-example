@@ -6,7 +6,7 @@ create table public.user (
     created_date timestamp default current_timestamp
 );
 
-comment on table public.user is 'forum users.'
+comment on table public.user is 'forum users.';
 
 create table public.post (
     id serial primary key,
@@ -16,4 +16,4 @@ create table public.post (
     author_id integer not null references public.user(id)
 );
 
-comment on table public.post is 'forum posts.'
+comment on table public.post is 'forum posts.';
