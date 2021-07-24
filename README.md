@@ -19,3 +19,4 @@ docker-compose down
 ## Links
 - [Running PostGraphile in Docker](https://www.graphile.org/postgraphile/running-postgraphile-in-docker/)
 - [Running PostGraphile as a library in Dockerr](https://www.graphile.org/postgraphile/running-postgraphile-as-a-library-in-docker/)
+- [PostGraphile Schema Design](https://www.graphile.org/postgraphile/postgresql-schema-design/)
