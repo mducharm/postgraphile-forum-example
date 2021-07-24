@@ -28,8 +28,7 @@ comment on column app_public.post.created_at is 'The time this post was created.
 
 /* Functions */
 
-create function 
-    app_public.post_summary(
+create function app_public.post_summary(
         post app_public.post,
         length int default 50,
         omission text default '...'
@@ -43,8 +42,7 @@ $$ language sql stable;
 
 comment on function app_public.post_summary(forum_example.post, int, text) is 'A truncated version of the body for summaries.';
 
-create function 
-    app_public.person_latest_post(person app_public.person)
+create function app_public.person_latest_post(person app_public.person)
 returns app_public.post as $$
     select post.* 
     from app_public.post as post
@@ -54,3 +52,14 @@ returns app_public.post as $$
 $$ language sql stable;
 
 comment on function app_public.person_latest_post(app_public.person) is 'Get’s the latest post written by the person.';
+
+create function app_public.search_posts(search text)
+returns setof app_public.post as $$
+    select post.*
+    from app_public.post as post
+    where position(search in post.headline) > 0
+    or position(search in post.body) > 0
+$$ language sql stable;
+
+
+comment on function app_public.search_posts(text) is 'Returns posts containing a given search term.';
