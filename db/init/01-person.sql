@@ -7,7 +7,7 @@ create table app_public.person (
     first_name text not null check (char_length(first_name) < 80),
     last_name text check (char_length(first_name) < 80),
     about text,
-    created_date timestamp default current_timestamp
+    created_at timestamp default current_timestamp
 );
 
 comment on table app_public.person is 'A user of the forum.';
