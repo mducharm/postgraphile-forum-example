@@ -18,7 +18,7 @@ create function app_public.register_person(
     first_name text,
     last_name text,
     email text,
-    password text,
+    password text
 )
 returns app_public.person as $$
     declare person app_public.person;
