@@ -1,3 +1,5 @@
+\connect forum_example;
+
 create table app_private.person_account (
     person_id integer primary key references app_public.person(id) on delete cascade,
     email text not null unique check (email ~* '^.+@.+\..+$'),
