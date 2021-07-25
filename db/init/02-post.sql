@@ -43,7 +43,7 @@ returns text as $$
     end
 $$ language sql stable;
 
-comment on function app_public.post_summary(forum_example.post, int, text) is 'A truncated version of the body for summaries.';
+comment on function app_public.post_summary(app_public.post, int, text) is 'A truncated version of the body for summaries.';
 
 create function app_public.person_latest_post(person app_public.person)
 returns app_public.post as $$
