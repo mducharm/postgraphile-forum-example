@@ -66,3 +66,11 @@ $$ language sql stable;
 
 
 comment on function app_public.search_posts(text) is 'Returns posts containing a given search term.';
+
+/* Triggers */
+
+create trigger post_updated at before UPDATE
+    on app_public.post
+    for each row
+    execute procedure app_private.set_updated_at();
+

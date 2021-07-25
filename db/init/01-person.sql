@@ -32,3 +32,7 @@ comment on function app_public.person_full_name(app_public.person) is 'A personâ
 
 /* Triggers */
 
+create trigger person_updated_at before update 
+    on app_public.person
+    for each row
+    execute procedure app_private.set_updated_at();
