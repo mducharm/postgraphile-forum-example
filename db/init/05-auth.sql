@@ -29,3 +29,12 @@ returns app_public.jwt_token as $$
 $$ language plpgsql strict security definer;
 
 comment on function app_public.authenticate(text, text) is 'Creates a JWT token that will securely identify a person and give them certain permissions. This token expires in 2 days.';
+
+create function app_public.current_person()
+returns app_public.person as $$
+    select * 
+    from app_public.person
+    where id = nullif(current_setting('jwt.claims.person_id', true), '')::integer
+$$ language sql stable;
+
+comment on function app_public.current_person() is 'Gets the person who was identified by our JWT.';
