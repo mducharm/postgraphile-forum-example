@@ -11,7 +11,8 @@ app.use(postgraphile(
         graphiql: true,
         enhanceGraphiql: true,
         retryOnInitFail: true,
-        pgDefaultRole: process.env.DEFAULT_ROLE || "forum_anon"
+        pgDefaultRole: process.env.DEFAULT_ROLE || "forum_anon",
+        jwtPgTypeIdentifier: "app_public.jwt_token"
     }
 ));
 
