@@ -12,7 +12,7 @@ app.use(postgraphile(
         enhanceGraphiql: true,
         retryOnInitFail: true,
         pgDefaultRole: process.env.DEFAULT_ROLE || "forum_anon",
-        jwtPgTypeIdentifier: "app_public.jwt_token",
+        jwtPgTypeIdentifier: process.env.JWT_TYPE_IDENTIFIER || "app_public.jwt_token",
         jwtSecret: process.env.JWT_SECRET
     }
 ));
