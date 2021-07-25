@@ -69,7 +69,7 @@ comment on function app_public.search_posts(text) is 'Returns posts containing a
 
 /* Triggers */
 
-create trigger post_updated at before UPDATE
+create trigger post_updated_at before update
     on app_public.post
     for each row
     execute procedure app_private.set_updated_at();
